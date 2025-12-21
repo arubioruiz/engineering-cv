@@ -229,6 +229,8 @@
   }
 
   async function renderToolsDashboard() {
+    console.log("renderToolsDashboard() called");
+
     const container = document.getElementById("tools-dashboard");
     if (!container) return;
 
@@ -311,4 +313,5 @@
   });
 
 })();
+
 
