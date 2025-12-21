@@ -44,7 +44,7 @@
     const container = document.getElementById("research-stats");
     if (!container) return;
 
-    const publications = await loadJSON("/data/publications.json");
+    const publications = await loadJSON("data/publications.json");
 
     const byType = publications.reduce((acc, p) => {
       acc[p.type] = (acc[p.type] || 0) + 1;
@@ -74,8 +74,8 @@
     if (!grid) return;
 
     const [topics, publications] = await Promise.all([
-      loadJSON("/data/topics.json"),
-      loadJSON("/data/publications.json")
+      loadJSON("data/topics.json"),
+      loadJSON("data/publications.json")
     ]);
 
     grid.innerHTML = "";
@@ -112,8 +112,8 @@
     if (!listEl || !titleEl) return;
 
     const [publications, topics] = await Promise.all([
-      loadJSON("/data/publications.json"),
-      loadJSON("/data/topics.json")
+      loadJSON("data/publications.json"),
+      loadJSON("data/topics.json")
     ]);
 
     const topicMap = Object.fromEntries(topics.map(t => [t.id, t.label]));
@@ -147,7 +147,7 @@
     const grid = document.getElementById("industry-grid");
     if (!grid) return;
 
-    const fields = await loadJSON("/data/industry_fields.json");
+    const fields = await loadJSON("data/industry_fields.json");
     grid.innerHTML = "";
 
     fields.forEach(field => {
@@ -173,8 +173,8 @@
     if (!container) return;
 
     const [fields, tools] = await Promise.all([
-      loadJSON("/data/industry_fields.json"),
-      loadJSON("/data/tools.json")
+      loadJSON("data/industry_fields.json"),
+      loadJSON("data/tools.json")
     ]);
 
     const toolMap = Object.fromEntries(tools.map(t => [t.id, t.label]));
@@ -272,3 +272,4 @@
   });
 
 })();
+
