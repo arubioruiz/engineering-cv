@@ -1,0 +1,86 @@
+[
+  {
+    "id": "abaqus",
+    "label": "ABAQUS (CAE, Standard, Explicit, Viewer)",
+    "type": "fem",
+    "description": "Nonlinear structural analysis, contact, damage, fatigue, static and high-strain-rate simulations."
+  },
+    {
+    "id": "optistruct",
+    "label": "Altair Optistruct",
+    "type": "fem",
+    "description": "Nonlinear structural analysis, contact."
+  },
+  {
+    "id": "altair-simlab",
+    "label": "Altair SimLab",
+    "type": "fem",
+    "description": "Pre-processing, meshing automation, and model standardisation."
+  },
+  {
+    "id": "ansa",
+    "label": "ANSA",
+    "type": "fem",
+    "description": "Pre-processing, meshing automation, and model standardisation."
+  },
+  {
+    "id": "meta",
+    "label": "META",
+    "type": "fem",
+    "description": "Post-processing, report automation."
+  }, 
+    {
+    "id": "vcollab",
+    "label": "VCollab",
+    "type": "fem",
+    "description": "Post-processing, report automation."
+  }, 
+  {
+    "id": "femfat",
+    "label": "FEMFAT",
+    "type": "fem",
+    "description": "High-cycle fatigue assessment, lifetime prediction, and safety factor evaluation."
+  },
+  {
+    "id": "zset",
+    "label": "Z-SET",
+    "type": "fem",
+    "description": "Nonlinear fatigue, cyclic plasticity, and damage modelling."
+  },
+  {
+    "id": "matlab",
+    "label": "MATLAB",
+    "type": "scripting",
+    "description": "Numerical modelling, optimisation, inverse methods, and data processing."
+  },
+  {
+    "id": "python",
+    "label": "Python",
+    "type": "scripting",
+    "description": "CAE automation, workflow orchestration, post-processing, and report generation."
+  },
+  {
+    "id": "fluent",
+    "label": "FLUENT",
+    "type": "cfd",
+    "description": "Fluid dynamics analysis, heat management, cooling efficiency, granular flow analysis"
+  },  
+    {
+    "id": "barracuda",
+    "label": "Barracuda V.R.",
+    "type": "cfd",
+    "description": "Fluid dynamics analysis for granular and reactive flow"
+  },  
+    {
+    "id": "nx",
+    "label": "NX",
+    "type": "cad",
+    "description": "2D and 3D CAD for simulation geometry preparation"
+  } ,  
+    {
+    "id": "spaceclaim",
+    "label": "SpaceClaim",
+    "type": "cad",
+    "description": "2D and 3D CAD for simulation geometry preparation"
+  }
+]

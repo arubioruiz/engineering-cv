@@ -1,0 +1,30 @@
+[
+  {
+    "id": "structural-mechanics",
+    "label": "Structural Mechanics and Load Assessment of Metallic Structures",
+    "short": "Global and local structural behaviour under static, dynamic, and assembly-related loads.",
+    "description": "Performed global and detailed structural analyses of large metallic structures, including assessment of torsional stiffness, deflections, and stress levels under service and assembly loads. The work covered modal and dynamic analyses under environmental loading such as wind, as well as detailed evaluation of joints, connections, contacts, and load paths to support structural integrity, robustness, and design validation.",
+    "tools": ["optistruct","ansa","meta","spaceclaim"]
+  },
+  {
+    "id": "fluid-thermal-flows",
+    "label": "Fluid Flow, Thermal, and Reactive Flow Analysis",
+    "short": "Fluid, thermal, and multiphysics flow analyses supporting load definition and system performance.",
+    "description": "Applied numerical fluid flow analyses ranging from standardized CFD for load estimation to coupled thermal and conjugate heat transfer simulations for cooling efficiency assessment. Extended these approaches to multiphase and reactive flow problems, including granular and gas–solid interactions, to support the analysis and development of CO₂ mineralisation and sequestration devices.",
+    "tools": ["fluent","barracuda","matlab","python","spaceclaim"]
+  },
+  {
+    "id": "dynamic-events",
+    "label": "Dynamic Event and Material Removal Analysis",
+    "short": "Dynamic loading, wave propagation, and material removal in impact-driven systems.",
+    "description": "Modelled dynamic events involving high-rate loading and material removal, with particular focus on percussive drilling systems. The work included analysis of elastic wave propagation, impact efficiency, penetration mechanisms, and pulse shape influence in both industrial and handheld drilling devices, enabling virtual evaluation and tuning of rate of penetration and operational efficiency.",
+    "tools": ["abaqus","python","matlab"]
+  },
+  {
+    "id": "marine-energy",
+    "label": "Marine and Energy Systems Engineering (Wärtsilä)",
+    "short": "Structural integrity, wear, fatigue, and simulation workflow ownership for large-scale systems.",
+    "description": "Contributed to new product development, current product engineering, and technology development for large-scale marine and energy systems. The work covered structural integrity and thermo-mechanical analyses, fatigue and lifetime assessment, wear and contact behaviour including sealing interfaces, assembly stiffness and deflection, and ownership of automated simulation workflows to support design validation and industrial decision-making.",
+    "tools": ["abaqus","femfat","zset","altair-simlab","python","nx","vcollab"]
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "fem",
+    "label": "Finite Element Analysis",
+    "description": "Nonlinear structural mechanics, fatigue, damage, and dynamic simulations."
+  },
+  {
+    "id": "cfd",
+    "label": "Computational Fluid Dynamics",
+    "description": "Multiphase, reactive, and thermal flows for engineering optimisation."
+  },
+  {
+    "id": "scripting",
+    "label": "Engineering Scripting & Automation",
+    "description": "Automation, optimisation, and workflow integration."
+  },
+  {
+    "id": "cad",
+    "label": "CAD",
+    "description": "2D and 3D CAD for simulation geometry preparation."
+  }
+]

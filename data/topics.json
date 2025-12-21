@@ -1,0 +1,27 @@
+[
+  {
+    "id": "rock-mechanics",
+    "label": "Rock Mechanics",
+    "description": "Damage, fracture, and weakening mechanisms in geomaterials, with emphasis on coupled electro-mechanical effects and high-rate loading."
+  },
+  {
+    "id": "fatigue",
+    "label": "Fatigue",
+    "description": "High-cycle fatigue modelling, lifetime prediction, and calibration of fatigue criteria under complex loading conditions."
+  },
+  {
+    "id": "metal-plasticity",
+    "label": "Metal Plasticity",
+    "description": "Constitutive modelling of metals, strain-rate effects and phase transformations."
+  },
+  {
+    "id": "inverse-method-development",
+    "label": "Inverse Method Development",
+    "description": "Parameter identification, optimisation, and inverse modelling strategies for material model calibration."
+  },
+{
+  "id": "advanced-characterization",
+  "label": "Advanced Characterization",
+  "description": "Inverse extraction of non-observable physical quantities by integrating multi-modal full-field measurements with physics-based numerical models."
+}
+]
