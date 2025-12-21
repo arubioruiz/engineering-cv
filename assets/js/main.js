@@ -7,7 +7,9 @@
 
   async function loadJSON(path) {
     const res = await fetch(path);
-    if (!res.ok) throw new Error(`Failed to load ${path}`);
+    if (!res.ok) {
+      throw new Error(`Failed to load ${path}`);
+    }
     return res.json();
   }
 
@@ -55,7 +57,10 @@
 
     const totalCard = document.createElement("div");
     totalCard.className = "card";
-    totalCard.innerHTML = `<h3>Total Publications</h3><p><strong>${publications.length}</strong></p>`;
+    totalCard.innerHTML = `
+      <h3>Total Publications</h3>
+      <p><strong>${publications.length}</strong></p>
+    `;
     container.appendChild(totalCard);
 
     Object.entries(byType).forEach(([type, count]) => {
@@ -116,11 +121,12 @@
       loadJSON("data/topics.json")
     ]);
 
-    const topicMap = Object.fromEntries(topics.map(t => [t.id, t.label]));
+    const topicMap = Object.fromEntries(
+      topics.map(t => [t.id, t.label])
+    );
 
     function applyFilter() {
       const hash = window.location.hash.replace("#", "");
-
       let filtered = publications;
 
       if (hash && topicMap[hash]) {
@@ -153,6 +159,7 @@
     fields.forEach(field => {
       const card = document.createElement("div");
       card.className = "card";
+      card.style.cursor = "pointer";
 
       card.innerHTML = `
         <h3>${field.label}</h3>
@@ -161,7 +168,8 @@
       `;
 
       card.addEventListener("click", () => {
-        document.getElementById(field.id)?.scrollIntoView({ behavior: "smooth" });
+        document.getElementById(field.id)
+          ?.scrollIntoView({ behavior: "smooth" });
       });
 
       grid.appendChild(card);
@@ -177,7 +185,10 @@
       loadJSON("data/tools.json")
     ]);
 
-    const toolMap = Object.fromEntries(tools.map(t => [t.id, t.label]));
+    const toolMap = Object.fromEntries(
+      tools.map(t => [t.id, t.label])
+    );
+
     container.innerHTML = "";
 
     fields.forEach(field => {
@@ -192,11 +203,12 @@
         <p>${field.description}</p>
       `;
 
-      const badgeContainer = document.createElement("div");
-      badgeContainer.style.marginTop = "15px";
+      const badges = document.createElement("div");
+      badges.style.marginTop = "15px";
 
       field.tools.forEach(toolId => {
         if (!toolMap[toolId]) return;
+
         const badge = document.createElement("span");
         badge.textContent = toolMap[toolId];
         badge.style.cssText = `
@@ -208,11 +220,46 @@
           font-size:0.75rem;
           font-weight:600;
         `;
-        badgeContainer.appendChild(badge);
+        badges.appendChild(badge);
       });
 
-      section.appendChild(badgeContainer);
+      section.appendChild(badges);
       container.appendChild(section);
+    });
+  }
+
+  async function renderToolsDashboard() {
+    const container = document.getElementById("tools-dashboard");
+    if (!container) return;
+
+    const [types, tools] = await Promise.all([
+      loadJSON("data/tool_types.json"),
+      loadJSON("data/tools.json")
+    ]);
+
+    container.innerHTML = "";
+
+    types.forEach(type => {
+      const block = document.createElement("div");
+      block.className = "content-section";
+
+      block.innerHTML = `
+        <h3>${type.label}</h3>
+        <p>${type.description}</p>
+      `;
+
+      const list = document.createElement("ul");
+
+      tools
+        .filter(t => t.type === type.id)
+        .forEach(tool => {
+          const li = document.createElement("li");
+          li.innerHTML = `<strong>${tool.label}</strong> — ${tool.description}`;
+          list.appendChild(li);
+        });
+
+      block.appendChild(list);
+      container.appendChild(block);
     });
   }
 
@@ -228,22 +275,11 @@
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const toggle = () => {
-      if (window.scrollY > 400) btn.classList.add("is-visible");
-      else btn.classList.remove("is-visible");
+      btn.classList.toggle("is-visible", window.scrollY > 400);
     };
 
     toggle();
-
-    let ticking = false;
-    window.addEventListener("scroll", () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          toggle();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
+    window.addEventListener("scroll", toggle, { passive: true });
 
     btn.addEventListener("click", () => {
       window.scrollTo({
@@ -264,11 +300,14 @@
 
     renderIndustryGrid();
     renderIndustryDetails();
+    renderToolsDashboard();
 
     initBackToTop();
 
     const yearEl = document.getElementById("year");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
+    }
   });
 
 })();
