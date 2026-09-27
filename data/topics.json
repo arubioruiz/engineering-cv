@@ -19,9 +19,9 @@
     "label": "Inverse Method Development",
     "description": "Parameter identification, optimisation, and inverse modelling strategies for material model calibration."
   },
-{
-  "id": "advanced-characterization",
-  "label": "Advanced Characterization",
-  "description": "Inverse extraction of non-observable physical quantities by integrating multi-modal full-field measurements with physics-based numerical models."
-}
+  {
+    "id": "advanced-characterization",
+    "label": "Advanced Characterization",
+    "description": "Inverse extraction of non-observable physical quantities by integrating multi-modal full-field measurements with physics-based numerical models."
+  }
 ]
