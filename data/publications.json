@@ -256,5 +256,16 @@
     "type": "preprint",
     "status": "under-review",
     "topics": ["metal-plasticity"]
+  },
+  {
+    "id": "rubio-2026-tisd-cylinder-head",
+    "title": "Resolving Cyclic Plasticity in Thermo-Mechanical FEM of Marine Engines with Microstructure-Aware Z-mat Material Models",
+    "authors": ["Rubio Ruiz, R.A.", "Kumpula, A.", "Mäkinen, K.", "Laine, J.", "Vaara, J.", "Frondelius, T."],
+    "venue": "Transvalor International Simulation Days (TISD 2026), Antibes, France",
+    "year": 2026,
+    "type": "conference",
+    "status": "accepted",
+    "url": "https://tisd.transvalor.com/program",
+    "topics": ["fatigue","metal-plasticity"]
   }
 ]
