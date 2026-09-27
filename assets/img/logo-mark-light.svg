@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="75 66 520 520" role="img" aria-label="AR monogram, Arturo Rubio">
+<defs>
+<linearGradient id="la" gradientUnits="userSpaceOnUse" x1="160" y1="80" x2="190" y2="570"><stop offset="0" stop-color="#7a9097"/><stop offset="1" stop-color="#3d5158"/></linearGradient>
+<linearGradient id="lb" gradientUnits="userSpaceOnUse" x1="175" y1="80" x2="480" y2="400"><stop offset="0" stop-color="#6c838a"/><stop offset="1" stop-color="#34474e"/></linearGradient>
+<linearGradient id="lc" gradientUnits="userSpaceOnUse" x1="175" y1="97" x2="470" y2="570"><stop offset="0" stop-color="#e39a6f"/><stop offset="0.6" stop-color="#c56f45"/><stop offset="1" stop-color="#8e4a2d"/></linearGradient>
+<clipPath id="lk"><rect x="160" y="82" width="400" height="488"/></clipPath>
+<mask id="lg" maskUnits="userSpaceOnUse" x="0" y="0" width="700" height="700"><rect width="700" height="700" fill="#fff"/><line x1="284" y1="272" x2="322" y2="333" stroke="#000" stroke-width="52"/></mask>
+</defs>
+
+<g clip-path="url(#lk)">
+<path d="M175,97 C300,86 440,70 478,104 C512,136 330,282 175,405" fill="none" stroke="url(#lb)" stroke-width="30" mask="url(#lg)"/>
+<line x1="175" y1="82" x2="175" y2="570" stroke="url(#la)" stroke-width="30"/>
+<line x1="175" y1="97" x2="470" y2="570" stroke="url(#lc)" stroke-width="30"/>
+</g>
+</svg>

@@ -10,6 +10,11 @@
     content="Industrial engineering experience in structural mechanics, CFD, simulation automation, and product development."
   />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600&display=swap" />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <meta name="theme-color" content="#14242e" />
   <link rel="stylesheet" href="assets/css/style.css" />
 
   <!-- Social preview -->
@@ -28,10 +33,14 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
+<header class="site-header theme-dark">
+  <a class="brand" href="" aria-label="Arturo Rubio, home">
+    <img src="assets/img/logo-mark-dark.svg" alt="" width="34" height="34" />
+    <span>Arturo Rubio</span>
+  </a>
   <nav class="site-nav" aria-label="Primary navigation">
     <a href="">Home</a>
-    <a href="industry/">Industry</a>
+    <a href="industry/" aria-current="page">Industry</a>
     <a href="research/">Research</a>
     <a href="story/">Story</a>
     <a href="contact/">Contact</a>
@@ -44,7 +53,8 @@
   <!-- =====================
        INDUSTRY SUMMARY
        ===================== -->
-  <section class="content-section">
+  <section class="content-section page-hero theme-dark">
+    <p class="overline">Industrial R&amp;D · Simulation-Driven Engineering</p>
     <h1>Industry</h1>
 
     <p class="hero__summary">
@@ -87,8 +97,12 @@
 
 </main>
 
-<footer class="site-footer">
-  <p>© <span id="year"></span> Rafael Arturo Rubio Ruiz · Vaasa, Finland</p>
+<footer class="site-footer theme-dark">
+  <div class="footer-brand">
+    <img src="assets/img/logo-mark-dark.svg" alt="AR monogram" width="40" height="40" />
+    <span class="footer-slogan">Designing engineering systems that <span class="hl">endure.</span></span>
+  </div>
+  <p>© <span id="year"></span> Rafael Arturo Rubio Ruiz · Tampere IAS &amp; Tampere University · Vaasa, Finland</p>
 </footer>
 
 <!-- Floating Back to Top (GLOBAL, single instance) -->

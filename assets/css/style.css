@@ -1,36 +1,46 @@
 /* =========================================================
-   ROOT VARIABLES & BASE RESET
-   Palette matches the LinkedIn banner and social preview:
-   deep navy background, FE-mesh blues, teal highlights,
-   and a coral "hotspot" accent.
+   BRAND SYSTEM
+   One palette, two surfaces:
+   - Light (default): the reading surface for all content.
+   - Dark (.theme-dark): the frame. Header, page heroes,
+     the closing strip and the footer.
+   The navy of the dark surface is the ink on the light one,
+   and the off-white of the light surface is the ink on the
+   dark one. Copper is the only accent on both.
    ========================================================= */
 
 :root {
-  /* Accent colours */
-  --accent: #ff5a3c;               /* coral hotspot: links, buttons, key labels */
-  --accent-strong: #ff5a3c;
-  --accent-strong-hover: #ff7a60;
-  --accent-ink: #0f1424;           /* text placed on coral */
-  --teal: #7fc4d4;                 /* overlines, card titles */
-  --teal-deep: #2a8aa0;
-  --amber: #e0a13a;                /* awards */
+  /* Brand constants */
+  --navy: #14242e;
+  --navy-deep: #0d171e;
+  --paper: #f4f2ee;
+  --copper: #c56f45;
 
-  /* Text */
-  --text: #e8edf6;
-  --text-strong: #ffffff;
-  --muted: #9aa7bf;
+  /* Light surface tokens */
+  --bg: var(--paper);
+  --bg-soft: #ffffff;
+  --bg-raised: #ebe8e2;
 
-  /* Surfaces */
-  --bg: #0f1424;                   /* page */
-  --bg-soft: #161d33;              /* cards, service items */
-  --bg-raised: #1b2440;            /* highlighted sections */
-  --bg-footer: #0b0f1c;
+  --text: #33444c;
+  --text-strong: var(--navy);
+  --muted: #5f747b;
 
-  /* Lines */
-  --border: #26314f;
-  --line: #1f2945;
+  --accent: #a4532e;               /* copper, darkened for text contrast on paper */
+  --accent-bright: #c56f45;        /* rules, dots, decorative copper */
+  --button-bg: #a4532e;
+  --button-bg-hover: #8c4526;
+  --button-ink: #ffffff;
 
-  --font-sans: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --steel: #3f6470;                /* overlines, card titles */
+
+  --border: #dcd7ce;
+  --line: #e4e0d8;
+
+  --shadow: 0 14px 34px rgba(20, 36, 46, 0.10);
+
+  /* Type */
+  --font-head: "Poppins", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-sans: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
   --space-xs: 0.5rem;
   --space-s: 1rem;
@@ -40,8 +50,33 @@
   --container-pad: 8%;
   --radius-s: 8px;
   --radius-m: 12px;
+}
 
-  --glow: 0 18px 40px rgba(0, 0, 0, 0.45);
+/* Dark frame: same variable names, dark values */
+.theme-dark {
+  --bg: var(--navy);
+  --bg-soft: rgba(255, 255, 255, 0.045);
+  --bg-raised: #1a2e3a;
+
+  --text: #cfdadd;
+  --text-strong: #f2f5f5;
+  --muted: #8fa6ad;
+
+  --accent: #d0845a;
+  --accent-bright: #d0845a;
+  --button-bg: #d0845a;
+  --button-bg-hover: #e0996f;
+  --button-ink: var(--navy);
+
+  --steel: #8fb3bd;
+
+  --border: rgba(159, 180, 187, 0.22);
+  --line: rgba(159, 180, 187, 0.14);
+
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+
+  background-color: var(--bg);
+  color: var(--text);
 }
 
 *,
@@ -52,14 +87,14 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--bg);
+  background: var(--paper);
 }
 
 body {
   margin: 0;
   font-family: var(--font-sans);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.65;
   background: var(--bg);
 }
 
@@ -67,16 +102,36 @@ h1,
 h2,
 h3,
 h4 {
+  font-family: var(--font-head);
+  font-weight: 600;
   color: var(--text-strong);
+  line-height: 1.2;
 }
 
 strong {
   color: var(--text-strong);
+  font-weight: 600;
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: var(--copper);
+  color: #fff;
+}
+
+/* Copper highlight for the key word in a headline */
+.hl {
+  color: var(--accent-bright);
+}
+
+/* Small spaced-out label, as on the banner */
+.overline {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin: 0 0 14px;
 }
 
 /* =========================================================
@@ -87,8 +142,8 @@ strong {
   position: absolute;
   top: -100px;
   left: 10px;
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: var(--copper);
+  color: #fff;
   font-weight: 700;
   padding: 8px 12px;
   z-index: 100;
@@ -108,45 +163,76 @@ a:hover {
   text-decoration: underline;
 }
 
-a:focus-visible {
-  outline: 2px solid var(--teal);
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-bright);
   outline-offset: 2px;
 }
 
 /* =========================================================
-   HEADER & NAVIGATION
+   HEADER & NAVIGATION (dark frame)
    ========================================================= */
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(15, 20, 36, 0.92);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem var(--space-m);
+  padding: 0.9rem var(--container-pad);
+  background: rgba(20, 36, 46, 0.94);
   backdrop-filter: blur(8px);
-  border-bottom: 2px solid transparent;
-  border-image: linear-gradient(90deg, var(--teal-deep), var(--accent)) 1;
+  border-bottom: 1px solid rgba(159, 180, 187, 0.14);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: #f2f5f5;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+}
+
+.brand:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.brand img {
+  width: 34px;
+  height: 34px;
+  display: block;
 }
 
 .site-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem var(--space-m);
-  padding: 1.4rem var(--container-pad);
+  gap: 0.5rem var(--space-m);
 }
 
 .site-nav a {
-  font-weight: 600;
-  color: #c9d2e3;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #b9c8cc;
   letter-spacing: 0.02em;
+  padding: 0.3rem 0;
+  border-bottom: 2px solid transparent;
 }
 
 .site-nav a:hover {
-  color: var(--text-strong);
+  color: #f2f5f5;
   text-decoration: none;
 }
 
 .site-nav a[aria-current="page"] {
-  color: var(--accent);
+  color: #f2f5f5;
+  border-bottom-color: #d0845a;
 }
 
 /* =========================================================
@@ -178,55 +264,60 @@ a:focus-visible {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -2px;
-  width: 64px;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--accent);
+  bottom: -1px;
+  width: 46px;
+  height: 2px;
+  background: var(--accent-bright);
 }
 
 .section-header h2 {
   margin: 0;
-  font-size: 2.2rem;
+  font-size: 2.1rem;
   letter-spacing: -0.5px;
 }
 
-/* Honors section carries an inline light background in index.html */
 #impact {
-  background: var(--bg-raised) !important;
+  background: var(--bg-raised);
 }
 
 /* =========================================================
-   HERO
+   DARK HEROES (home hero + first section on each subpage)
+   Wave mesh from the banner fades in from the right.
    ========================================================= */
 
-.hero {
+.hero,
+.page-hero {
   position: relative;
   overflow: hidden;
-  padding: 120px var(--container-pad) 60px;
   background:
-    radial-gradient(ellipse 55% 70% at 85% 10%, rgba(42, 138, 160, 0.28), transparent 70%),
-    radial-gradient(ellipse 40% 50% at 10% 90%, rgba(35, 80, 122, 0.35), transparent 70%),
-    var(--bg);
-  border-bottom: 1px solid var(--line);
+    radial-gradient(ellipse 60% 90% at 20% 40%, #1d3440, transparent 70%),
+    linear-gradient(180deg, var(--navy), var(--navy-deep));
+  border-bottom: none;
 }
 
-/* Faint triangular FE-mesh texture, fading out towards the edges */
-.hero::before {
+.hero::before,
+.page-hero::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image:
-    repeating-linear-gradient(0deg, rgba(127, 196, 212, 0.07) 0 1px, transparent 1px 48px),
-    repeating-linear-gradient(60deg, rgba(127, 196, 212, 0.07) 0 1px, transparent 1px 48px),
-    repeating-linear-gradient(-60deg, rgba(127, 196, 212, 0.07) 0 1px, transparent 1px 48px);
-  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 80% 20%, #000 20%, transparent 75%);
-  mask-image: radial-gradient(ellipse 70% 80% at 80% 20%, #000 20%, transparent 75%);
+  background: url("../img/wave.svg") no-repeat right -80px center / auto 120%;
+  opacity: 0.5;
+  -webkit-mask-image: linear-gradient(90deg, transparent 5%, rgba(0, 0, 0, 0.35) 40%, #000 80%);
+  mask-image: linear-gradient(90deg, transparent 5%, rgba(0, 0, 0, 0.35) 40%, #000 80%);
 }
 
-.hero > * {
+.hero > *,
+.page-hero > * {
   position: relative;
+}
+
+.hero {
+  padding: 110px var(--container-pad) 70px;
+}
+
+.page-hero {
+  padding: 90px var(--container-pad) 80px;
 }
 
 .hero__identity {
@@ -236,43 +327,66 @@ a:focus-visible {
 
 .hero h1 {
   margin: 0;
-  font-size: 3.5rem;
+  font-size: 3.3rem;
   line-height: 1.1;
-  letter-spacing: -1.5px;
+  letter-spacing: -1px;
+}
+
+.hero__slogan {
+  margin: 18px 0 0;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1.9rem;
+  line-height: 1.2;
+  color: var(--text-strong);
 }
 
 .hero__tagline {
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--teal);
-  margin-top: 18px;
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-top: 16px;
+}
+
+.hero__tagline .sep {
+  color: var(--muted);
+  margin: 0 0.5rem;
 }
 
 .hero__layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 32px;
-  align-items: flex-start;
-  margin-top: 40px;
+  gap: 48px;
+  align-items: center;
 }
 
 .hero__content {
-  max-width: 900px;
+  max-width: 880px;
+}
+
+.hero__mark {
+  width: 260px;
+  height: 260px;
+  display: block;
 }
 
 .hero__summary {
-  font-size: 1.15rem;
-  line-height: 1.7;
-  color: #c9d2e3;
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--text);
   margin: 30px 0 0;
-  border-left: 3px solid transparent;
-  border-image: linear-gradient(180deg, var(--teal), var(--accent)) 1;
-  padding-left: 25px;
+  max-width: 900px;
 }
 
-/* Optional image support if used on Story or later */
+/* Short copper rule, as under the banner subline */
+.hero__summary::before {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 2px;
+  background: var(--accent-bright);
+  margin-bottom: 22px;
+}
+
 .hero__image {
   margin-top: 6px;
   display: flex;
@@ -283,33 +397,8 @@ a:focus-visible {
   width: 240px;
   max-width: 240px;
   border-radius: var(--radius-m);
-  box-shadow: var(--glow);
+  box-shadow: var(--shadow);
   object-fit: cover;
-}
-
-@media (max-width: 600px) {
-  .hero {
-    padding-top: 70px;
-  }
-
-  .hero h1,
-  .content-section > h1 {
-    font-size: 2.4rem;
-    letter-spacing: -0.5px;
-  }
-
-  .hero__tagline {
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-  }
-
-  .section-header h2 {
-    font-size: 1.7rem;
-  }
-
-  .content-section {
-    padding: 56px var(--container-pad);
-  }
 }
 
 @media (max-width: 900px) {
@@ -317,13 +406,44 @@ a:focus-visible {
     grid-template-columns: 1fr;
   }
 
-  .hero__image {
-    margin-top: 30px;
+  .hero__mark {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 64px;
   }
 
-  .hero__image img {
-    width: 220px;
-    max-width: 220px;
+  .page-hero {
+    padding: 64px var(--container-pad) 56px;
+  }
+
+  .hero h1,
+  .content-section > h1 {
+    font-size: 2.3rem;
+    letter-spacing: -0.5px;
+  }
+
+  .hero__slogan {
+    font-size: 1.4rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .content-section {
+    padding: 56px var(--container-pad);
+  }
+
+  .site-header {
+    padding: 0.8rem 5%;
+  }
+
+  .site-nav {
+    gap: 0.4rem 1.1rem;
   }
 }
 
@@ -334,17 +454,19 @@ a:focus-visible {
 .button {
   display: inline-block;
   padding: 12px 26px;
-  border-radius: 24px;
-  background: var(--accent);
-  color: var(--accent-ink);
-  font-weight: 700;
+  border-radius: 6px;
+  background: var(--button-bg);
+  color: var(--button-ink);
+  font-weight: 600;
+  letter-spacing: 0.01em;
   transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
 .button:hover {
-  background: var(--accent-strong-hover);
+  background: var(--button-bg-hover);
+  color: var(--button-ink);
   text-decoration: none;
-  box-shadow: 0 10px 24px rgba(255, 90, 60, 0.25);
+  box-shadow: 0 10px 24px rgba(197, 111, 69, 0.25);
   transform: translateY(-2px);
 }
 
@@ -355,7 +477,7 @@ a:focus-visible {
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
+  gap: 22px;
 }
 
 .card {
@@ -364,32 +486,35 @@ a:focus-visible {
   border-radius: var(--radius-m);
   background: var(--bg-soft);
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.25s;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .card:hover {
-  border-color: var(--teal-deep);
-  box-shadow: var(--glow), 0 0 0 1px rgba(127, 196, 212, 0.15);
-  transform: translateY(-5px);
+  border-color: var(--accent-bright);
+  box-shadow: var(--shadow);
+  transform: translateY(-4px);
 }
 
 .card h3 {
-  color: var(--teal);
-  font-size: 1.05rem;
+  margin-top: 0;
+  color: var(--steel);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.16em;
 }
 
 .card p {
-  color: #c9d2e3;
+  color: var(--text);
 }
 
 .nav-btn {
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 0.85rem;
+  font-weight: 600;
   color: var(--accent);
   margin-top: 15px;
 }
@@ -397,6 +522,7 @@ a:focus-visible {
 /* Research overview numbers */
 #research-stats strong {
   display: block;
+  font-family: var(--font-head);
   font-size: 2.4rem;
   line-height: 1;
   color: var(--text-strong);
@@ -416,19 +542,19 @@ a:focus-visible {
 
 .service-item h4 {
   margin-top: 0;
-  color: var(--teal);
-  font-size: 1.2rem;
+  color: var(--text-strong);
+  font-size: 1.15rem;
 }
 
 .service-item p {
   margin-bottom: 0;
-  color: #c9d2e3;
+  color: var(--text);
 }
 
-/* Key message on the LIDO-SuMa section: the "hotspot" block */
+/* Key message on the LIDO-SuMa section: the copper "hotspot" block */
 #lido-suma p + .service-item {
-  border-color: rgba(255, 90, 60, 0.55);
-  background: linear-gradient(135deg, rgba(255, 90, 60, 0.08), var(--bg-soft) 60%);
+  border-color: rgba(197, 111, 69, 0.55);
+  border-left: 3px solid var(--copper);
 }
 
 #lido-suma p + .service-item h4 {
@@ -446,12 +572,13 @@ a:focus-visible {
 }
 
 .edu-year {
-  font-weight: 700;
+  font-weight: 600;
   color: var(--accent);
 }
 
 .edu-title {
-  font-size: 1.3rem;
+  font-family: var(--font-head);
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--text-strong);
 }
@@ -468,18 +595,19 @@ a:focus-visible {
 
 .award-card {
   background: var(--bg-soft);
-  border: 1px solid rgba(224, 161, 58, 0.45);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--copper);
   padding: 20px;
   border-radius: var(--radius-s);
 }
 
 .award-card strong {
-  color: var(--amber);
+  color: var(--text-strong);
 }
 
 .award-card p {
   margin-bottom: 0;
-  color: #c9d2e3;
+  color: var(--text);
 }
 
 /* =========================================================
@@ -497,9 +625,11 @@ a:focus-visible {
 .domain-list li {
   background: var(--bg-soft);
   padding: 15px 20px;
-  border-left: 3px solid var(--teal-deep);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--steel);
   border-radius: 6px;
   font-weight: 600;
+  color: var(--text-strong);
 }
 
 /* =========================================================
@@ -531,15 +661,68 @@ a:focus-visible {
 }
 
 /* =========================================================
-   FOOTER
+   CLOSING STRIP (one dark strip before the footer)
+   ========================================================= */
+
+.cta-strip {
+  padding: 80px var(--container-pad);
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse 50% 90% at 85% 50%, #1d3440, transparent 70%),
+    var(--navy);
+}
+
+.cta-strip h2 {
+  margin: 0 0 12px;
+  font-size: 2.2rem;
+  letter-spacing: -0.5px;
+}
+
+.cta-strip p {
+  max-width: 720px;
+  margin: 0 0 28px;
+}
+
+/* =========================================================
+   FOOTER (dark frame)
    ========================================================= */
 
 .site-footer {
-  padding: 40px var(--container-pad);
-  background: var(--bg-footer);
-  border-top: 1px solid var(--line);
+  padding: 44px var(--container-pad);
+  background: var(--navy-deep);
+  color: #8fa6ad;
   font-size: 0.9rem;
-  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.footer-brand img {
+  width: 40px;
+  height: 40px;
+}
+
+.footer-slogan {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #f2f5f5;
+}
+
+.footer-slogan .hl {
+  color: #d0845a;
 }
 
 /* =========================================================
@@ -551,24 +734,37 @@ a:focus-visible {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
-  gap: 40px;
+  gap: 48px;
   align-items: center;
 }
 
 .story-hero__image {
   margin: 0;
+  position: relative;
+}
+
+/* The copper arc from the logo ring, around the portrait */
+.story-hero__image::after {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  border: 1px solid rgba(159, 180, 187, 0.35);
+  border-bottom-color: #d0845a;
+  pointer-events: none;
 }
 
 .story-hero__image img {
   width: 100%;
-  border-radius: 14px;
-  box-shadow: var(--glow), 0 0 0 2px var(--accent);
+  aspect-ratio: 1;
+  border-radius: 50%;
   object-fit: cover;
+  display: block;
 }
 
 .story-hero__lead {
-  font-size: 1.2rem;
-  color: var(--muted);
+  font-size: 1.15rem;
+  color: var(--text);
   max-width: 700px;
 }
 
@@ -611,21 +807,21 @@ a:focus-visible {
 }
 
 .timeline-year {
-  font-weight: 700;
+  font-weight: 600;
   color: var(--accent);
   font-size: 1.05rem;
-  padding-left: 20px; /* space from the vertical line */
+  padding-left: 20px;
 }
 
 .timeline-content h3 {
   margin: 0 0 10px;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
 }
 
 .timeline-content p {
   margin: 0 0 12px;
   line-height: 1.7;
-  color: #c9d2e3;
+  color: var(--text);
 }
 
 .timeline-item::before {
@@ -635,10 +831,9 @@ a:focus-visible {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, var(--teal-deep), var(--border));
+  background: var(--border);
 }
 
-/* Node on the timeline, like the agent nodes in the banner */
 .timeline-item::after {
   content: "";
   position: absolute;
@@ -648,13 +843,13 @@ a:focus-visible {
   height: 10px;
   border-radius: 50%;
   background: var(--bg);
-  border: 2px solid var(--teal);
+  border: 2px solid var(--steel);
 }
 
 .timeline-item:last-child::after {
-  background: var(--accent);
-  border-color: var(--accent);
-  box-shadow: 0 0 0 5px rgba(255, 90, 60, 0.2);
+  background: var(--copper);
+  border-color: var(--copper);
+  box-shadow: 0 0 0 5px rgba(197, 111, 69, 0.2);
 }
 
 @media (max-width: 800px) {
@@ -695,12 +890,13 @@ a:focus-visible {
   border: none;
   border-radius: 999px;
 
-  background: var(--accent-strong);
-  color: var(--accent-ink);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+  background: var(--navy);
+  color: #f2f5f5;
+  box-shadow: 0 10px 24px rgba(20, 36, 46, 0.3);
 
+  font-family: var(--font-sans);
   font-size: 0.95rem;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 0.02em;
   line-height: 1;
 
@@ -719,8 +915,9 @@ a:focus-visible {
 .back-to-top::before {
   content: "↑";
   font-size: 1.15rem;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1;
+  color: #d0845a;
 }
 
 .back-to-top.is-visible {
@@ -731,26 +928,24 @@ a:focus-visible {
 }
 
 .back-to-top:hover {
-  background: var(--accent-strong-hover);
-}
-
-.back-to-top:focus-visible {
-  outline: 2px solid var(--teal);
-  outline-offset: 3px;
+  background: #1d3440;
 }
 
 /* =========================================================
-   PRINT: back to dark text on white paper
+   PRINT: dark text on white paper
    ========================================================= */
 
 @media print {
-  .back-to-top {
+  .back-to-top,
+  .hero__mark,
+  .cta-strip {
     display: none !important;
   }
 
   html,
   body,
   .hero,
+  .page-hero,
   .content-section,
   .card,
   .service-item,
@@ -764,6 +959,7 @@ a:focus-visible {
   }
 
   .hero::before,
+  .page-hero::before,
   .section-header::after,
   .timeline-item::after {
     display: none;
@@ -776,6 +972,7 @@ a:focus-visible {
   strong,
   p,
   .hero__summary,
+  .hero__slogan,
   .edu-title,
   .publication__title,
   .timeline-content p {
@@ -783,15 +980,19 @@ a:focus-visible {
   }
 
   a,
+  .hl,
   .card h3,
-  .service-item h4,
   .edu-year,
-  .timeline-year,
-  .award-card strong {
-    color: #a80417 !important;
+  .timeline-year {
+    color: #8c4526 !important;
   }
 
   .site-header {
     position: static;
+    background: #fff !important;
+  }
+
+  .brand {
+    color: #1a1a1a !important;
   }
 }

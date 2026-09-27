@@ -12,7 +12,12 @@
       content="Postdoctoral Research Fellow at Tampere IAS and Tampere University. Fatigue, durability, and agent-based CAE workflows for lifetime-informed, sustainable design optimization."
     />
 
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600&display=swap" />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <meta name="theme-color" content="#14242e" />
+  <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" media="print" href="assets/css/print.css" />
 
 
@@ -39,9 +44,13 @@
     <!-- =====================
      HEADER / NAV
      ===================== -->
-    <header class="site-header">
-    <nav class="site-nav" aria-label="Primary navigation">
-      <a href="">Home</a>
+    <header class="site-header theme-dark">
+  <a class="brand" href="" aria-label="Arturo Rubio, home">
+    <img src="assets/img/logo-mark-dark.svg" alt="" width="34" height="34" />
+    <span>Arturo Rubio</span>
+  </a>
+  <nav class="site-nav" aria-label="Primary navigation">
+      <a href="" aria-current="page">Home</a>
       <a href="industry/">Industry</a>
       <a href="research/">Research</a>
       <a href="story/">Story</a>
@@ -55,18 +64,21 @@
       <!-- =====================
        HERO
        ===================== -->
-      <section class="hero">
+      <section class="hero theme-dark">
         <div class="hero__identity">
           <div class="hero__layout">
             <div class="hero__content">
+              <p class="overline">Engineering Research · Intelligent CAE</p>
               <h1>Rafael Arturo Rubio Ruiz, PhD</h1>
+              <p class="hero__slogan">Designing engineering systems that <span class="hl">endure.</span></p>
               <p class="hero__tagline">
-                Agentic CAE · Fatigue &amp; Durability · Lifetime-Informed Design Optimization
+                Agentic CAE<span class="sep">·</span>Fatigue &amp; Durability<span class="sep">·</span>Lifetime-Informed Design Optimization
               </p>
               <p class="hero__summary">
                 I am a Postdoctoral Research Fellow at the Tampere Institute for Advanced Study and Tampere University, where I lead LIDO-SuMa, a project that brings fatigue and wear physics into sustainability-driven design optimization. My background combines materials engineering, applied mathematics, and computational mechanics, together with industrial R&amp;D at Wärtsilä, where I ran large-scale simulations of marine engines and automated CAE workflows. Today I build agent-based CAE workflows that automate, orchestrate, and optimize simulations, so engineering teams can design products that use less material and still last. What drives me is research that grows from a good idea into tools used at industrial scale, with real impact for society.
               </p>
             </div>
+            <img class="hero__mark" src="assets/img/logo-ring-dark.svg" alt="AR monogram for Arturo Rubio" width="260" height="260" />
           </div>
         </div>
 
@@ -218,7 +230,7 @@
       <!-- =====================
        IMPACT
        ===================== -->
-      <section id="impact" class="content-section" style="background: #fafafa">
+      <section id="impact" class="content-section">
         <div class="section-header">
           <h2>Honors &amp; Impact</h2>
         </div>
@@ -244,16 +256,21 @@
       <!-- =====================
        RESEARCH CTA
        ===================== -->
-      <section id="research" class="content-section">
-        <h2>Research &amp; Publications</h2>
-        <p>Peer-reviewed journal articles, conference papers, datasets, ongoing manuscripts, and my current project, LIDO-SuMa.</p>
+      <section id="research" class="cta-strip theme-dark">
+        <p class="overline">Research &amp; Publications</p>
+        <h2>Physics, data and AI for products <span class="hl">built to last.</span></h2>
+        <p>Peer-reviewed journal articles, conference papers, datasets, ongoing manuscripts, and my current project at Tampere IAS, LIDO-SuMa.</p>
         <a class="button" href="research/">Explore my Research →</a>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <p>© <span id="year"></span> Rafael Arturo Rubio Ruiz · Vaasa, Finland</p>
-    </footer>
+    <footer class="site-footer theme-dark">
+  <div class="footer-brand">
+    <img src="assets/img/logo-mark-dark.svg" alt="AR monogram" width="40" height="40" />
+    <span class="footer-slogan">Designing engineering systems that <span class="hl">endure.</span></span>
+  </div>
+  <p>© <span id="year"></span> Rafael Arturo Rubio Ruiz · Tampere IAS &amp; Tampere University · Vaasa, Finland</p>
+</footer>
 
     <!-- Floating Back to Top -->
     <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top" title="Back to top">Back to top</button>
